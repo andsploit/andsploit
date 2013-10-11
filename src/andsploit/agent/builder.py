@@ -1,5 +1,6 @@
 import os
 import platform
+import sys
 
 from mwr.common import command_wrapper
 
@@ -8,6 +9,8 @@ from andsploit.configuration import Configuration
 class Packager(command_wrapper.Wrapper):
     
     __aapt = Configuration.library("aapt")
+    if sys.platform == "darwin":
+        __aapt = Configuration.library("mac_aapt")
     __aapt_exe = Configuration.library("aapt.exe")
     __apk_tool = Configuration.library("apktool.jar")
     __certificate = Configuration.library("certificate.pem")
@@ -20,7 +23,7 @@ class Packager(command_wrapper.Wrapper):
     
     def __init__(self):
         self.__wd = self._get_wd()
-        
+    
     def apk_path(self, signed=True):
         if signed:
             return os.path.join(self.__wd, "agent.apk")
