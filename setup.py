@@ -3,7 +3,7 @@ import glob
 import os
 import setuptools
 
-from drozer import meta
+from andsploit import meta
 
 def find_files(src):
     matches = []
@@ -36,11 +36,11 @@ setuptools.setup(
   url = meta.url,
 
   packages = setuptools.find_packages("src"),
-  package_dir = {   "drozer": "src/drozer",
+  package_dir = {   "andsploit": "src/andsploit",
                     "mwr": "src/mwr",
                     "pydiesel": "src/pydiesel" },
   package_data = { "": ["*.apk", "*.bks", "*.crt", "*.docx", "*.jar", "*.key", "*.sh", "*.xml", "busybox"] + find_libs("src"),
-                   "drozer": ["lib/aapt",
+                   "andsploit": ["lib/aapt",
                               "lib/aapt.exe",
                               "lib/*.apk",
                               "lib/*.jar",
@@ -48,6 +48,6 @@ setuptools.setup(
                               "lib/*.pk8",
                               "lib/weasel/*",
                               "server/web_root/*" ] },
-  scripts = ["bin/drozer", "bin/drozer-complete"],
+  scripts = ["bin/andsploit", "bin/andsploit-complete"],
   install_requires = ["protobuf==2.4.1", "pyopenssl==0.13"],
   classifiers = [])

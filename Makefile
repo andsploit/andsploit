@@ -1,26 +1,26 @@
 
-NATIVES = $(shell find src/drozer/modules -name Android.mk)
-SOURCES = $(shell find src/drozer/modules -name *.java)
+NATIVES = $(shell find src/andsploit/modules -name Android.mk)
+SOURCES = $(shell find src/andsploit/modules -name *.java)
 
 DX = dx
 JAVAC = javac
 NDKBUILD = ndk-build
 PYTHON = python
 
-SDK = $(CURDIR)/src/drozer/lib/android.jar
+SDK = $(CURDIR)/src/andsploit/lib/android.jar
 
 all: sources apks native-libraries
 	@echo
 	@echo "----------------------------------------"
 	@echo
-	@echo "drozer"
-	@echo "You are almost ready to run drozer..."
+	@echo "andsploit"
+	@echo "You are almost ready to run andsploit..."
 	@echo
 	@echo "To finish preparing your environment run:"
 	@echo
 	@echo "  $$ source ENVIRONMENT"
 	@echo
-	@echo "Then you should be able to run 'drozer' to see the available commands."
+	@echo "Then you should be able to run 'andsploit' to see the available commands."
 	@echo
 	@echo "----------------------------------------"
 	@echo

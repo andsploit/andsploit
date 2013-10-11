@@ -23,11 +23,24 @@ protobuf介绍：
 http://www.ibm.com/developerworks/cn/linux/l-cn-gpb/
 
 
+安装
+----------
+make
+source ENVIRONMENT
+详见INSTALLING
+
+
 
 todo list
 ----------
 crash 集成添加
 intentfuzz ,Content Provider Fuzzer 集成添加
+
+
+other
+----------
+
+参见wiki页面和wall页面，欢迎相互评论
 
 
 License
