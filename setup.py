@@ -18,11 +18,21 @@ def find_libs(src):
     
     for root, dirnames, filenames in os.walk(src):
         for filename in fnmatch.filter(dirnames, 'lib'):
-            matches.extend(glob.glob(os.path.join(root, filename, "*", "*")))
+            tmp=glob.glob(os.path.join(root, filename, "*", "*"))
+            print tmp
+            #matches.extend(tmp)
         for filename in fnmatch.filter(dirnames, 'libs'):
-            matches.extend(glob.glob(os.path.join(root, filename, "*", "*")))
-
+            tmp=glob.glob(os.path.join(root, filename, "*", "*"))
+            print tmp
+            for i in tmp:
+                if os.path.isdir(i):
+                    tmp.remove(i)
+            matches.extend(tmp)
     return map(lambda fn: os.path.basename(fn), matches)
+
+#['src/andsploit/lib/weasel/armeabi']
+#['src/andsploit/modules/tools/setup/minimal-su/libs/armeabi1/__init__.py', 'src/andsploit/modules/tools/setup/minimal-su/libs/armeabi1/su']
+#find_libs("src")
     
 setuptools.setup(
   name = meta.name,
@@ -39,8 +49,9 @@ setuptools.setup(
   package_dir = {   "andsploit": "src/andsploit",
                     "mwr": "src/mwr",
                     "pydiesel": "src/pydiesel" },
-  package_data = { "": ["*.apk", "*.bks", "*.crt", "*.docx", "*.jar", "*.key", "*.sh", "*.xml", "busybox"] + find_libs("src"),
+  package_data = { "": ["*.apk", "*.bks", "*.crt", "*.docx", "*.jar", "*.key", "*.sh", "*.xml", "busybox"] + ['src/andsploit/lib/weasel/armeabi']+['src/andsploit/modules/tools/setup/minimal-su/libs/armeabi/__init__.py', 'src/andsploit/modules/tools/setup/minimal-su/libs/armeabi/su'],
                    "andsploit": ["lib/aapt",
+                                 "lib/mac_aapt",
                               "lib/aapt.exe",
                               "lib/*.apk",
                               "lib/*.jar",
