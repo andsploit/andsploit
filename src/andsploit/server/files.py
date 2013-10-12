@@ -3,6 +3,7 @@ import re
 from mwr.common import fs
 
 from andsploit.server.receivers.http import HTTPResponse
+from andsploit import android
 
 class FileProvider(object):
     
@@ -23,9 +24,14 @@ class FileProvider(object):
         del self.__store[resource]
         
     def get(self, resource):
+        if android.debug:
+            print "resource:",resource,__file__
+            print "resource:",self.__store
         if resource in self.__store:
+            print "store:\n",self.__store[resource]
             return self.__store[resource]
         else:
+            print "cq:",resource,"\n",self.__store
             return ErrorResource(resource, 404, "The resource %s could not be found on this server.")
     
     def get_by_magic(self, magic):
@@ -126,9 +132,12 @@ class InMemoryMultipartResource(Resource):
     
     def getBody(self, user_agent):
         for k in self.body:
-            if re.match(k, user_agent) != None:
+            tmp = re.match(k, user_agent)
+            print "multi match:",tmp
+            if tmp != None:
                 return self.body[k]
-            
+        if android.debug:
+                print "files_get_body user_Agent not match,should be:",user_agent,"\n",self.body
         return None
     
     def getResponse(self, request):
@@ -138,9 +147,11 @@ class InMemoryMultipartResource(Resource):
             
         body = self.getBody(request.headers['User-Agent'])
         
+        #cq
         if body != None:
             return HTTPResponse(status=200, headers=headers, body=body)
         else:
+            #return HTTPResponse(status=200, headers=headers, body="test")
             return ErrorResource(request.resource, 404, "The resource %s could not be found on this server.").getResponse(request)
     
     def valid(self):
