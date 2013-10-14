@@ -1,7 +1,7 @@
 from mwr.common import cli, console, text
 
 from andsploit.repoman.installer import ModuleInstaller
-from andsploit.repoman.remotes import Remote, UnknownRemote
+from andsploit.repoman.remotes import Remote, NetworkException, UnknownRemote
 from andsploit.repoman.repositories import Repository, NotEmptyException, UnknownRepository
 
 class ModuleManager(cli.Base):

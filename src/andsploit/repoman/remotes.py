@@ -130,4 +130,15 @@ class UnknownRemote(Exception):
     
     def __str__(self):
         return "The remote %s is not registered." % self.url
+
+class NetworkException(Exception):
+    """
+        Raised if a Remote is not available, becaues of some network error.
+        """
+    
+    def __init__(self):
+        Exception.__init__(self)
+    
+    def __str__(self):
+        return "There was a problem accessing the remote."
     
