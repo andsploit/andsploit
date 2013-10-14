@@ -10,3 +10,5 @@ src/andsploit/modules/**/*.class
 src/andsploit/modules/**/*.apk
 andsploit.egg-info
 .git/*
+.idea/*
+*.DS_Store
