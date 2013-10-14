@@ -28,7 +28,7 @@ class FileProvider(object):
             print "resource:",resource,__file__
             print "resource:",self.__store
         for key in self.__store:
-            if re.match(key,resource)!=None:
+            if re.match("^" + key  + "$", resource) != None:
                 return self.__store[resource]
         else:
             return ErrorResource(resource, 404, "The resource %s could not be found on this server.")

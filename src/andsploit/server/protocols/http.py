@@ -3,6 +3,7 @@ from logging import getLogger
 
 from andsploit.server.files import CreatedResource, ErrorResource
 from andsploit.server.receivers.http import HttpReceiver
+from andsploit import android
 
 class HTTP(HttpReceiver):
     """
@@ -55,6 +56,8 @@ class HTTP(HttpReceiver):
                 
                 resource = ErrorResource(request.resource, 200, "Deleted: %s")
         elif request.verb == "GET":
+            if android.debug:
+                print "LOG GET %s" % request.resource
             self.__logger.info("GET %s" % request.resource)
             
             resource = self.__file_provider.get(request.resource)
@@ -71,6 +74,8 @@ class HTTP(HttpReceiver):
                 return
             else:
                 resource = self.__file_provider.get(request.resource)
+                if android.debug:
+                    print "debug:",request.headers
                 
                 if resource != None and resource.reserved:
                     resource = ErrorResource(request.resource, 403, "You are not authorized to write the resource %s.")
@@ -84,6 +89,9 @@ class HTTP(HttpReceiver):
                     else:
                         magic = None
                     if "X-andsploit-Vary-UA" in request.headers and request.headers["X-andsploit-Vary-UA"].startswith("true"):
+                        if android.debug:
+                           print "debug:CQ:",request.headers["X-andsploit-Vary-UA"]
+                           #raw_input()
                         multipart = request.headers["X-andsploit-Vary-UA"].split(";")[1].strip()
                     else:
                         multipart = None

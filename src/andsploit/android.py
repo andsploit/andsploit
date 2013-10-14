@@ -1,4 +1,5 @@
-
+debug = True
+#debug = False
 permissions = [     'android.permission.ACCESS_CHECKIN_PROPERTIES',
                     'android.permission.ACCESS_COARSE_LOCATION',
                     'android.permission.ACCESS_FINE_LOCATION',

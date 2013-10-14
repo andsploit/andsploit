@@ -1,3 +1,4 @@
+#coding=utf-8
 from base64 import b64encode
 from socket import socket
 import ssl
@@ -47,3 +48,4 @@ def upload(arguments, resource, data, magic=None, mimetype=None, headers=None):
     response = HTTPResponse.readFrom(sock)
 
     return response.status == 201
+#201(已创建)请求成功并且服务器创建了新的资源。

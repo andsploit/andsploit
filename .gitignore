@@ -4,9 +4,9 @@
 *.pyc
 .profile
 build/*
-dist/*
-drozer.egg-info
 log/*.log
 obj
 src/andsploit/modules/**/*.class
 src/andsploit/modules/**/*.apk
+andsploit.egg-info
+.git/*
