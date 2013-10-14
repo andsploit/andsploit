@@ -525,7 +525,21 @@ class Session(cmd.Cmd):
             self.__permissions = []
         
         return self.__permissions
+
+    def preloop(self):
+        cmd.Cmd.preloop(self)
         
+        latest = meta.latest_version()
+        if latest != None:
+            if meta.version > latest:
+                print "It seems that you are running a andsploit pre-release. Brilliant!\n\nPlease send any bugs, feature requests or other feedback to our Github project:\ngit.blue-lotus.net/hellok/bluexploit.\n\nYour contributions help us to make andsploit awesome.\n"
+            elif meta.version < latest:
+                print "It seems that you are running an old version of andsploit. andsploit v%s was\nreleased on %s. We suggest that you update your copy to make sure that\nyou have the latest features and fixes.\n\nTo download the latest andsploit visit: http://git.blue-lotus.net/hellok/bluexploit\n" % (latest, latest.date)
+            
+    
+
+
+
     def sendAndReceive(self, message):
         """
         Delivers a message to the Agent, and returns the response.

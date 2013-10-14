@@ -27,11 +27,10 @@ class FileProvider(object):
         if android.debug:
             print "resource:",resource,__file__
             print "resource:",self.__store
-        if resource in self.__store:
-            print "store:\n",self.__store[resource]
-            return self.__store[resource]
+        for key in self.__store:
+            if re.match(key,resource)!=None:
+                return self.__store[resource]
         else:
-            print "cq:",resource,"\n",self.__store
             return ErrorResource(resource, 404, "The resource %s could not be found on this server.")
     
     def get_by_magic(self, magic):

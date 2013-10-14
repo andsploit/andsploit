@@ -243,7 +243,11 @@ class Cmd(cmd.Cmd):
             line = self.__redirect_output(line)
 
         return line
-    
+            
+    def preloop(self):
+        if self.intro:
+            self.stdout.write(str(self.intro)+"\n")
+
     def push_completer(self, completer, history_file=None):
         if "readline" in sys.modules:
             self.__completer_stack.append(readline.get_completer())
