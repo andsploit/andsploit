@@ -1,4 +1,4 @@
 
 __all__ = [ "Console" ]
 
-from drozer.console.console import Console
+from andsploit.console.console import Console

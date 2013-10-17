@@ -70,7 +70,7 @@ class ModuleInstaller(object):
                     _modules = self.search_index(pattern)
                 except NetworkException as e:
                     status['fail'][pattern] = str(e)
-                    _modules[]=[]
+                    _modules=[]
 
             
             for module in _modules:
