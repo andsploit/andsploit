@@ -36,6 +36,9 @@ todo list
 crash 集成添加
 intentfuzz ,Content Provider Fuzzer 集成添加
 
+http://drops.wooyun.org/papers/548
+zip  dex  etc
+andrat移植近来
 
 other
 ----------
