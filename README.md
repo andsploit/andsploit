@@ -33,12 +33,15 @@ source ENVIRONMENT
 
 todo list
 ----------
-crash 集成添加
-intentfuzz ,Content Provider Fuzzer 集成添加
+crash 集成添加  done by lhm
+intentfuzz ,Content Provider Fuzzer 集成添加  进行中
+http://drops.wooyun.org/papers/548  李果 
+zip  dex  etc   
+andrat移植进来
 
-http://drops.wooyun.org/papers/548
-zip  dex  etc
-andrat移植近来
+可移植列表:
+----------
+http://github.com/andlab
 
 other
 ----------
